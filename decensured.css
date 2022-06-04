@@ -1,0 +1,8 @@
+.decensured-post-button {
+  background: var(--jv-text-primary);
+  line-height: 2rem;
+  padding: 0 1rem;
+}
+.decensured-decrypted-message {
+    background: var(--jv-text-primary);
+}

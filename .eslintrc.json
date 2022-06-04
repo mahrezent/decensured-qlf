@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "greasemonkey": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "ignorePatterns": [
+    "version",
+    "documentation/**",
+    "resources/**",
+    "variables.js",
+    "helper.js",
+    "cryptohelper.js",
+    "variables.js",
+    "messages.js",
+    "main.js"
+  ],
+  "rules": {
+    "no-unused-vars": "warn"
+  }
+}
