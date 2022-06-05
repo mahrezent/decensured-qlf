@@ -34,7 +34,7 @@ function decryptMessages() {
         const html = await transformJvcode(decryptedContent);
         messageContentElement.innerHTML = html ?? `<p>${decryptedContent}</p>`;
 
-        messageContentElement.classList.add('decensured-decrypted-message');
+        message.classList.add('decensured-decrypted-message');
     });
 }
 
