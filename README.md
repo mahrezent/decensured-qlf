@@ -1,10 +1,14 @@
 # **Décensured**
 
+> par le créateur du script [**Déboucled**](https://github.com/Rand0max/deboucled#readme)
+
 ## Chiffre et masque vos messages afin d'éviter la censure abusive sur les forums JVC.
 
-#### *Vous n'en pouvez plus de vous faire censurer sans raison ?*
-#### *Vous n'en pouvez plus de cette "erreur 410" ?*
-#### *Vous voulez discuter tranquillement tout en restant sur le 18-25 ?*
+#### _Vous n'en pouvez plus de vous faire censurer sans raison ?_
+
+#### _Vous n'en pouvez plus de cette "erreur 410" ?_
+
+#### _Vous voulez discuter tranquillement tout en restant sur le 18-25 ?_
 
 **Ce script est fait pour vous !**
 
@@ -38,4 +42,4 @@
 - [Page jvscript.fr](https://jvscript.fr/script/decensured)
 - [Repository officiel](https://github.com/Rand0max/decensured/)
 
-*Rand0max*
+_Rand0max_
