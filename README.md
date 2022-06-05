@@ -1,3 +1,5 @@
+[![DeepScan grade](https://deepscan.io/api/teams/16229/projects/21256/branches/606353/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=16229&pid=21256&bid=606353)
+
 # **Décensured**
 
 > par le créateur du script [**Déboucled**](https://github.com/Rand0max/deboucled#readme)
