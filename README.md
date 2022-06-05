@@ -6,6 +6,8 @@
 
 ## Chiffre et masque vos messages afin d'éviter la censure abusive sur les forums JVC.
 
+[Démonstration](https://i.imgur.com/PAuas65.gif)
+
 #### _Vous n'en pouvez plus de vous faire censurer sans raison ?_
 
 #### _Vous n'en pouvez plus de cette "erreur 410" ?_
