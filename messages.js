@@ -14,6 +14,18 @@ async function transformJvcode(rawMessage) {
     return resHtml;
 }
 
+function fixMessageJvCare(messageElement) {
+    messageElement.querySelectorAll('.JvCare').forEach(function (m) {
+        let anchor = document.createElement('a');
+        anchor.setAttribute('target', '_blank');
+        anchor.setAttribute('href', decryptJvCare(m.getAttribute('class')));
+        anchor.className = m.className.split(' ').splice(2).join(' ');
+        anchor.innerHTML = m.innerHTML;
+        m.outerHTML = anchor.outerHTML;
+    });
+    return messageElement;
+}
+
 function getAllMessages() {
     const messages = document.querySelectorAll('.conteneur-messages-pagi > div.bloc-message-forum');
     return messages;
@@ -35,6 +47,8 @@ function decryptMessages() {
         messageContentElement.innerHTML = html ?? `<p>${decryptedContent}</p>`;
 
         message.classList.add('decensured-decrypted-message');
+
+        fixMessageJvCare(message);
     });
 }
 

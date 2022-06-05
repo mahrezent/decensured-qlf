@@ -12,7 +12,7 @@
 
 #### _Vous n'en pouvez plus de cette "erreur 410" ?_
 
-#### _Vous voulez discuter tranquillement tout en restant sur le 18-25 ?_
+#### _Vous voulez discuter librement tout en restant sur le 18-25 ?_
 
 **Ce script est fait pour vous !**
 
