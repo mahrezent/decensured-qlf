@@ -51,10 +51,10 @@ function initCharMap() {
     encryptMap.set('%', '‎⁢');
     encryptMap.set('*', '‎⁣');
     encryptMap.set(';', '‎⁤');
+    encryptMap.set('<', '‎⁪');
+    encryptMap.set('>', '‎⁫');
+    encryptMap.set('€', '‎⁬');
     /*
-    encryptMap.set('', '‎⁪');
-    encryptMap.set('', '‎⁫');
-    encryptMap.set('', '‎⁬');
     encryptMap.set('', '‎⁭');
     encryptMap.set('', '‎⁮');
     encryptMap.set('', '‎⁯');
@@ -92,7 +92,6 @@ function initCharMap() {
     encryptMap.set('z', '͏');
 
     for (let [key, value] of encryptMap) decryptMap.set(value, key);
-    //encryptMap.forEach((v, k) => console.log('%s : %s', k, v.length));
 }
 
 function hideText(str) {
@@ -110,9 +109,6 @@ function hideText(str) {
 
 function revealText(str) {
     const strCoverless = [...str.replace(coverRaw, '')]; // en array les surrogate pairs valent 1 et non 2, plus facile à gérer
-    //console.log('length str : %i', str.length);
-    //console.log('length strCoverless : %i', str.replace(cover, '').length);
-    //console.log('length array strCoverless : %i', strCoverless.length);
     let res = '';
     for (let i = 0; i < strCoverless.length; i++) {
         let char = strCoverless[i];
@@ -137,6 +133,5 @@ function revealText(str) {
 
         res += char; // caractère non géré
     }
-    //console.log('decryptText res : %s', res);
     return res;
 }

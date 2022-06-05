@@ -9,6 +9,10 @@
 // @icon        https://risibank.fr/cache/medias/0/2/209/20968/thumb.png
 // @match       http://www.jeuxvideo.com/forums/*
 // @match       https://www.jeuxvideo.com/forums/*
+// @grant       GM_addStyle
+// @grant       GM.addStyle
+// @grant       GM.xmlHttpRequest
+// @resource    DECENSURED_CSS https://raw.githubusercontent.com/Rand0max/decensured/master/decensured.css
 // @require     variables.js
 // @require     helper.js
 // @require     cryptohelper.js
