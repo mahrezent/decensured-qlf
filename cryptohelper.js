@@ -102,13 +102,11 @@ function hideText(str) {
         if (encryptMap.has(char.toLowerCase())) res += encryptMap.get(char.toLowerCase());
         else res += char;
     }
-    //const textArea = document.querySelector('textarea#message_topic');
-    //textArea.value = `${coverRaw}${res}`;
     return `${coverFancy}${res}`;
 }
 
 function revealText(str) {
-    const strCoverless = [...str.replace(coverRaw, '')]; // en array les surrogate pairs valent 1 et non 2, plus facile à gérer
+    const strCoverless = [...str.replaceAll(coverRaw, '')]; // en array les surrogate pairs valent 1 et non 2, plus facile à gérer
     let res = '';
     for (let i = 0; i < strCoverless.length; i++) {
         let char = strCoverless[i];
@@ -133,5 +131,5 @@ function revealText(str) {
 
         res += char; // caractère non géré
     }
-    return res;
+    return res.replaceAll(coverFancy, '');
 }
