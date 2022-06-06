@@ -87,7 +87,7 @@ async function decryptMessages() {
         decryptedMessages.set(messageId, decryptedContent);
     });
 
-    if (decryptedMessages.length) await beautifyMessages(allMessages, decryptedMessages);
+    if (decryptedMessages.size) await beautifyMessages(allMessages, decryptedMessages);
 }
 
 function postEncryptedMessage(postButtonElement, textArea) {
