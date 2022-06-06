@@ -27,14 +27,50 @@ function fixMessageJvCare(messageElement) {
 }
 
 function getAllMessages() {
-    const messages = document.querySelectorAll('.conteneur-messages-pagi > div.bloc-message-forum');
+    const messages = [...document.querySelectorAll('.conteneur-messages-pagi > div.bloc-message-forum')];
     return messages;
 }
 
-function decryptMessages() {
+async function beautifyMessages(elementMessages, decryptedMessages) {
+    // On regroupe tout pour ne faire qu'une seule requête
+    let joinedMessages = '';
+    for (let [key, value] of decryptedMessages) joinedMessages += `\n\nmessageid=${key}\n\n${value}\n`;
+
+    const joinedJvCodeHtml = await transformJvcode(joinedMessages);
+
+    // On découpe la réponse par message
+    const splitHtmlRegex = new RegExp(/<p>messageid=(?<messageid>\d+)<\/p>(?<html>[\s\S]*?)(?=<p>messageid=\d+|$)/, 'g');
+    const matches = [...joinedJvCodeHtml.matchAll(splitHtmlRegex)];
+    if (!matches?.length) return;
+
+    matches.forEach(match => {
+        const messageId = parseInt(match.groups?.messageid);
+        if (!messageId) return;
+
+        const html = match.groups?.html.trim();
+        if (!html?.length) return;
+
+        const message = elementMessages.find(m => {
+            const mId = parseInt(m.getAttribute('data-id'));
+            return mId === messageId;
+        });
+        if (!message) return;
+
+        const messageContentElement = message.querySelector('.txt-msg.text-enrichi-forum');
+        if (!messageContentElement) return;
+
+        messageContentElement.innerHTML = html;
+        message.classList.add('decensured-decrypted-message');
+        fixMessageJvCare(message);
+    });
+}
+
+async function decryptMessages() {
     const allMessages = getAllMessages();
     if (!allMessages?.length) return;
 
+    // D'abord on déchiffre tous les messages
+    const decryptedMessages = new Map();
     allMessages.forEach(async (message) => {
         const messageContentElement = message.querySelector('.txt-msg.text-enrichi-forum');
         if (!messageContentElement) return;
@@ -42,14 +78,16 @@ function decryptMessages() {
         const content = messageContentElement.textContent.trim();
         if (!content.includes(coverRaw)) return;
 
+        const messageId = parseInt(message.getAttribute('data-id'));
+        if (!messageId) return;
+
         const decryptedContent = revealText(content);
-        const html = await transformJvcode(decryptedContent);
-        messageContentElement.innerHTML = html ?? `<p>${decryptedContent}</p>`;
+        if (!decryptedContent.trim().length) return;
 
-        message.classList.add('decensured-decrypted-message');
-
-        fixMessageJvCare(message);
+        decryptedMessages.set(messageId, decryptedContent);
     });
+
+    await beautifyMessages(allMessages, decryptedMessages);
 }
 
 function postEncryptedMessage(postButtonElement, textArea) {

@@ -55,8 +55,8 @@ function initCharMap() {
     encryptMap.set('>', '‎⁫');
     encryptMap.set('€', '‎⁬');
     encryptMap.set('+', '‎⁭');
+    encryptMap.set('ê', '‎⁮');
     /*
-    encryptMap.set('', '‎⁮');
     encryptMap.set('', '‎⁯');
     encryptMap.set('', '‎𝅷');
     encryptMap.set('', '‎𝅸');
