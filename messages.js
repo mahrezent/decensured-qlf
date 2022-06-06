@@ -41,7 +41,7 @@ async function beautifyMessages(elementMessages, decryptedMessages) {
     // On découpe la réponse par message
     const splitHtmlRegex = new RegExp(/<p>messageid=(?<messageid>\d+)<\/p>(?<html>[\s\S]*?)(?=<p>messageid=\d+|$)/, 'g');
     const matches = [...joinedJvCodeHtml.matchAll(splitHtmlRegex)];
-    if (!matches?.length) return;
+    if (!matches.length) return;
 
     matches.forEach(match => {
         const messageId = parseInt(match.groups?.messageid);
@@ -67,7 +67,7 @@ async function beautifyMessages(elementMessages, decryptedMessages) {
 
 async function decryptMessages() {
     const allMessages = getAllMessages();
-    if (!allMessages?.length) return;
+    if (!allMessages.length) return;
 
     // D'abord on déchiffre tous les messages
     const decryptedMessages = new Map();
