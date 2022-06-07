@@ -56,10 +56,10 @@ function initCharMap() {
     encryptMap.set('€', '‎⁬');
     encryptMap.set('+', '‎⁭');
     encryptMap.set('ê', '‎⁮');
+    encryptMap.set('ù', '‎⁯');
+    encryptMap.set('î', '‎𝅷');
+    encryptMap.set('ô', '‎𝅸');
     /*
-    encryptMap.set('', '‎⁯');
-    encryptMap.set('', '‎𝅷');
-    encryptMap.set('', '‎𝅸');
     encryptMap.set('', '‎‍');
     encryptMap.set('', '‎͏');
     */
