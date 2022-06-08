@@ -139,5 +139,5 @@ function buildCover(text) {
 }
 
 function getRandomCover() {
-    return buildCover(getRandomElement(platitudes));
+    return buildCover(`${getRandomElement(platitudes)} ${getRandomElement(platitudeStickers)}`);
 }
