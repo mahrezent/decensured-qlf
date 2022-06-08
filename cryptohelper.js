@@ -135,7 +135,7 @@ function revealText(str) {
 }
 
 function buildCover(text) {
-    return `${coverDetection} ${text} ${coverDetection}`;
+    return `${coverDetection} ${text} ${coverDetection} `;
 }
 
 function getRandomCover() {
