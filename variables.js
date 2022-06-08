@@ -14,7 +14,10 @@ const platitudes = [
     'Y\'a plus de saisons de toute manière...', 'On vit en démocratie ne l\'oubliez pas les kheys !', 'la politique ne m\'intéresse pas trop de toute facon',
     'C\'est peu ou prou la même chose', 'l\'important c\'est de participer', 'Il pleut vraiment très souvent en ce moment vous trouvez pas ?', 'C\'est comme chiens et chats',
     'bientôt mon anniversaire faut le savoir', 'Les goûts et les couleurs hein...', 'Savoir rester ouvert d\'esprit c\'est le plus important', 'Quel temps il va faire demain déjà ?',
-    'J\'aime bien Star Wars persoent', 'Drôle d\'idée !', 'Selon toi il faudrait faire quoi ?', 'Peut-être pas aujourd\'hui mais à réfléchir', 'ta reacprout ?'];
+    'J\'aime bien Star Wars persoent', 'Drôle d\'idée !', 'Selon toi il faudrait faire quoi ?', 'Peut-être pas aujourd\'hui mais à réfléchir', 'ta reacprout ?',
+    'L\'amour te tombera dessus au moment où tu t\'y attendras le moins crois moi', 'Garde l\'oeil ouvert, et le bon !', 'Protégez-vous les kheys', 'Prenez soin de vos proches les kheys',
+    'Les bouchons près de Paris on en parle ?', 'Le principal c\'est de protéger les autres avant soi-même', 'le week-end est passé tellement vite',
+    'C\'est lequel votre sticker préféré ? Moi c\'est ', 'Franchement je préfère pas y penser', 'Son point de vue est à considérer, mais restons prudents'];
 
 const platitudeStickers = [
     'https://image.noelshack.com/fichiers/2018/29/6/1532128784-risitas33.png', 'https://image.noelshack.com/fichiers/2017/39/3/1506524542-ruth-perplexev2.png',
@@ -29,4 +32,9 @@ const platitudeStickers = [
     'https://image.noelshack.com/fichiers/2017/18/1494048058-pppppppppppppppppppp.png', 'https://image.noelshack.com/fichiers/2017/04/1485259037-bloggif-588741091e719.png',
     'https://image.noelshack.com/fichiers/2018/10/1/1520255849-risitasse.png', 'https://image.noelshack.com/fichiers/2017/15/1492340491-jesus32.png',
     'https://image.noelshack.com/fichiers/2021/18/7/1620572127-jesus-barbe-serein.png', 'https://image.noelshack.com/fichiers/2017/05/1485800183-2588741.png',
-    'https://image.noelshack.com/fichiers/2017/08/1487984196-789797987987464646468798798.png', 'https://image.noelshack.com/fichiers/2017/14/1491249193-risitasg16462.png'];
+    'https://image.noelshack.com/fichiers/2017/08/1487984196-789797987987464646468798798.png', 'https://image.noelshack.com/fichiers/2017/14/1491249193-risitasg16462.png',
+    'https://image.noelshack.com/fichiers/2018/13/6/1522514564-risitasperplexeb.png', 'https://image.noelshack.com/fichiers/2016/24/1466366261-risitas51.png',
+    'https://image.noelshack.com/fichiers/2017/05/1486215313-sans-titre-20-5.png', 'https://image.noelshack.com/fichiers/2018/13/6/1522514698-risitassueurz.png',
+    'https://image.noelshack.com/fichiers/2017/05/1485878723-risitas-reflechis.png', 'https://image.noelshack.com/fichiers/2017/20/1495181295-risitasvieux2.png',
+    'https://image.noelshack.com/fichiers/2017/03/1484841031-bloggif-5880e02573f79.png', 'https://image.noelshack.com/fichiers/2016/38/1474755095-risitas719.png',
+    'https://image.noelshack.com/fichiers/2016/38/1474552335-1474295636-1472310133-picsart-08-27-04-31-36.png', 'https://image.noelshack.com/fichiers/2017/15/1492267199-jesus18.png'];
