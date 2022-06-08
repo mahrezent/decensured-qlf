@@ -84,6 +84,8 @@ async function decryptMessages() {
         const decryptedContent = revealText(content);
         if (!decryptedContent.trim().length) return;
 
+        //console.log('messageId=%i - decryptedContent : %s', messageId, decryptedContent);
+
         decryptedMessages.set(messageId, decryptedContent);
     });
 
