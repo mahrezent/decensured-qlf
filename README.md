@@ -43,7 +43,7 @@
 - Après installation, écrivez votre message normalement.
 - Cliquez sur le bouton bleu **'POST DÉCENSURED'** à la place du bouton "POSTER".
 - Votre message apparaitra en bleu et décensuré pour vous et les utilisateurs du script.
-- Les autres utilisateurs (y compris la modération) ne verront que des messages sans intérêt.
+- Les autres utilisateurs (y compris la modération) ne verront que des messages sans intérêt et générés aléatoirement.
 
 Voilà !
 
