@@ -59,8 +59,8 @@ function initCharMap() {
     encryptMap.set('ù', '‎⁯');
     encryptMap.set('î', '‎𝅷');
     encryptMap.set('ô', '‎𝅸');
+    encryptMap.set('û', '‎‍');
     /*
-    encryptMap.set('', '‎‍');
     encryptMap.set('', '‎͏');
     */
 
