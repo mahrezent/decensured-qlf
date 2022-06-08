@@ -13,3 +13,7 @@ function decryptJvCare(jvCareClass) {
     }
     return url;
 }
+
+function getRandomElement(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}

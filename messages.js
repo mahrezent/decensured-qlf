@@ -76,7 +76,7 @@ async function decryptMessages() {
         if (!messageContentElement) return;
 
         const content = messageContentElement.textContent.trim();
-        if (!content.includes(coverRaw)) return;
+        if (!content.match(coverDetectionRegex)) return;
 
         const messageId = parseInt(message.getAttribute('data-id'));
         if (!messageId) return;
