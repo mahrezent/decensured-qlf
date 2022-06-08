@@ -8,7 +8,13 @@ const platitudes = [
     'Je préfère m\'abstenir', 'Que répondre à ça !', 'Dans la vie c\'est tout ou rien', 'Je préfère en rire', 'Il vaut mieux rester concentré et attentif',
     'Il faut se battre pour réussir', 'La roue finira par tourner pour tout le monde !', 'La chance peut te sourire à n\'importe quel moment', 'Je ne sais pas trop de quel côté me ranger',
     'ça reste à débattre nonobstant.', 'En dépit des mesures sanitaires je reste vigilant', 'Une de perdue dix de retrouvées', 'Mieux vaut tard que jamais', 'ça reste à confirmer',
-    'Je condamne fermement', 'Pourquoi tu dis ça ?'];
+    'Je condamne fermement', 'Pourquoi tu dis ça ?', 'Le destin en décidera.', 'Tout est relatif tu sais...', 'Chacun fait ce qu\'il veut', 'Le pollen gratte les yeux en ce moment',
+    'Un week-end de 3 jours ça fait toujours du bien', 'C\'est dur le lundi :(', 'Les prix de l\'essence aident pas à se détendre non plus', 'Je ronge trop souvent mes ongles',
+    'beaucoup de monde à la pompe à essence ce matin !', 'Il y a des chances qu\'on soit pas seul dans l\'univers selon moi !', 'Mon eau préférée c\'est la cristalline et vous ?',
+    'Y\'a plus de saisons de toute manière...', 'On vit en démocratie ne l\'oubliez pas les kheys !', 'la politique ne m\'intéresse pas trop de toute facon',
+    'C\'est peu ou prou la même chose', 'l\'important c\'est de participer', 'Il pleut vraiment très souvent en ce moment vous trouvez pas ?', 'C\'est comme chiens et chats',
+    'bientôt mon anniversaire faut le savoir', 'Les goûts et les couleurs hein...', 'Savoir rester ouvert d\'esprit c\'est le plus important', 'Quel temps il va faire demain déjà ?',
+    'J\'aime bien Star Wars persoent', 'Drôle d\'idée !', 'Selon toi il faudrait faire quoi ?', 'Peut-être pas aujourd\'hui mais à réfléchir', 'ta reacprout ?'];
 
 const platitudeStickers = [
     'https://image.noelshack.com/fichiers/2018/29/6/1532128784-risitas33.png', 'https://image.noelshack.com/fichiers/2017/39/3/1506524542-ruth-perplexev2.png',
@@ -18,4 +24,9 @@ const platitudeStickers = [
     'https://image.noelshack.com/fichiers/2017/02/1484127482-jesusah2.png', 'https://image.noelshack.com/fichiers/2016/47/1480081469-ris6.png',
     'https://image.noelshack.com/fichiers/2016/36/1473137273-up.png', 'https://image.noelshack.com/fichiers/2016/50/1481994659-mathematicienrisitas.png',
     'https://image.noelshack.com/fichiers/2017/15/1491776892-bloggif-58eab299b8692.png', 'https://image.noelshack.com/fichiers/2016/42/1476947003-risitas-lunettes-main.png',
-    'https://image.noelshack.com/fichiers/2016/30/1469539438-zperplexe.png', 'https://image.noelshack.com/fichiers/2018/13/6/1522514760-jesusz.png'];
+    'https://image.noelshack.com/fichiers/2016/30/1469539438-zperplexe.png', 'https://image.noelshack.com/fichiers/2018/13/6/1522514760-jesusz.png',
+    'https://image.noelshack.com/fichiers/2017/30/4/1501186885-risitasueurbestreup.png', 'https://image.noelshack.com/fichiers/2017/30/4/1501185683-jesusjournalbestreup.png',
+    'https://image.noelshack.com/fichiers/2017/18/1494048058-pppppppppppppppppppp.png', 'https://image.noelshack.com/fichiers/2017/04/1485259037-bloggif-588741091e719.png',
+    'https://image.noelshack.com/fichiers/2018/10/1/1520255849-risitasse.png', 'https://image.noelshack.com/fichiers/2017/15/1492340491-jesus32.png',
+    'https://image.noelshack.com/fichiers/2021/18/7/1620572127-jesus-barbe-serein.png', 'https://image.noelshack.com/fichiers/2017/05/1485800183-2588741.png',
+    'https://image.noelshack.com/fichiers/2017/08/1487984196-789797987987464646468798798.png', 'https://image.noelshack.com/fichiers/2017/14/1491249193-risitasg16462.png'];
