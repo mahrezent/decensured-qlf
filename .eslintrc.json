@@ -17,6 +17,7 @@
     "cryptohelper.js",
     "variables.js",
     "messages.js",
+    "topics.js",
     "main.js"
   ],
   "rules": {

@@ -1,8 +1,14 @@
 
-const coverDetection = 'ﾠ';
-const coverDetectionRegex = new RegExp(/ﾠ.*ﾠ/, 'g');
+const coverDetection = '‏';
+const coverDetectionRegex = new RegExp(/[ﾠ‏].*[ﾠ‏]/, 'g');
 
-const platitudes = [
+const hideMessageClass = 'decensured-hide-message';
+const displayMessageClass = 'decensured-display-message';
+const decryptedMessageClass = 'decensured-decrypted-message';
+
+const messageContents = new Map();
+
+const platitudeMessages = [
     'J\'apprécie ce forum', 'Je ne sais pas quoi en penser', 'Je te retourne la question', 'Cette communauté est incroyable', 'Que pensez-vous de l\'actualité ?',
     'A titre personnel j\'hésite', 'Oui et non', 'C\'est étonnant', 'Ma réaction à chaud ? ent', 'C\'est un peu décevant', 'Je garde la tête haute', 'Pourquoi ?',
     'Je préfère m\'abstenir', 'Que répondre à ça !', 'Dans la vie c\'est tout ou rien', 'Je préfère en rire', 'Il vaut mieux rester concentré et attentif',
@@ -38,3 +44,14 @@ const platitudeStickers = [
     'https://image.noelshack.com/fichiers/2017/05/1485878723-risitas-reflechis.png', 'https://image.noelshack.com/fichiers/2017/20/1495181295-risitasvieux2.png',
     'https://image.noelshack.com/fichiers/2017/03/1484841031-bloggif-5880e02573f79.png', 'https://image.noelshack.com/fichiers/2016/38/1474755095-risitas719.png',
     'https://image.noelshack.com/fichiers/2016/38/1474552335-1474295636-1472310133-picsart-08-27-04-31-36.png', 'https://image.noelshack.com/fichiers/2017/15/1492267199-jesus18.png'];
+
+const platitudeTopics = [
+    'J\'apprécie ce forum', 'Cette communauté est incroyable', 'Que pensez-vous de l\'actualité ?', 'Je garde la tête haute', 'Dans la vie c\'est tout ou rien', 'Je préfère en rire',
+    'Il faut se battre pour réussir', 'La roue finira par tourner pour tout le monde !', 'La chance peut te sourire à n\'importe quel moment',
+    'Une de perdue dix de retrouvées', 'Mieux vaut tard que jamais', 'Je condamne fermement', 'Chacun fait ce qu\'il veut', 'Le pollen gratte les yeux en ce moment',
+    'Un week-end de 3 jours ça fait toujours du bien', 'C\'est dur le lundi :(', 'Les prix de l\'essence', 'Je ronge trop souvent mes ongles',
+    'Beaucoup de monde à la pompe à essence ce matin !', 'Il y a des chances qu\'on soit pas seul dans l\'univers !', 'Mon eau préférée c\'est la cristalline et vous ?',
+    'Y\'a plus de saisons', 'L\'important c\'est de participer', 'Il pleut vraiment très souvent en ce moment vous trouvez pas ?', 'Bientôt mon anniversaire',
+    'Savoir rester ouvert d\'esprit c\'est le plus important', 'Quel temps il va faire demain déjà ?', 'J\'aime bien Star Wars',
+    'L\'amour te tombera dessus au moment où tu t\'y attendras le moins', 'Protégez-vous les kheys', 'Prenez soin de vos proches les kheys',
+    'Les bouchons près de Paris on en parle ?', 'Le week-end est passé tellement vite', 'C\'est lequel votre sticker préféré ?',];

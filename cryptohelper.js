@@ -92,7 +92,7 @@ function initCharMap() {
     for (let [key, value] of encryptMap) decryptMap.set(value, key);
 }
 
-function hideText(str) {
+function hideText(str, isTopic = false) {
     let res = '';
     for (let i = 0; i < str.length; i++) {
         const char = str.charAt(i);
@@ -100,14 +100,11 @@ function hideText(str) {
         if (encryptMap.has(char.toLowerCase())) res += encryptMap.get(char.toLowerCase());
         else res += char;
     }
-    return `${getRandomCover()} ${res}`;
+    return `${getRandomCover(isTopic)} ${res}`;
 }
 
 function revealText(str) {
     const strCoverless = [...str.replaceAll(coverDetectionRegex, '')]; // en array les surrogate pairs valent 1 et non 2, plus facile à gérer
-
-    //console.log('strCoverless : %s', strCoverless);
-
     let res = '';
     for (let i = 0; i < strCoverless.length; i++) {
         let char = strCoverless[i];
@@ -132,15 +129,14 @@ function revealText(str) {
 
         res += char; // caractère non géré
     }
-    //console.log('res : %s', res);
-
     return res.replaceAll(coverDetectionRegex, '');
 }
 
-function buildCover(text) {
-    return `${coverDetection} ${text} ${coverDetection} `;
+function buildCover(text, separation = ' ') {
+    return `${coverDetection}${separation}${text}${separation}${coverDetection} `;
 }
 
-function getRandomCover() {
-    return buildCover(`${getRandomElement(platitudes)} ${getRandomElement(platitudeStickers)}`);
+function getRandomCover(isTopic = false) {
+    if (isTopic) return buildCover(`${upperCaseRandomWords(getRandomElement(platitudeTopics))}ﾠ`, '');
+    return buildCover(`${getRandomElement(platitudeMessages)} ${getRandomElement(platitudeStickers)}`);
 }

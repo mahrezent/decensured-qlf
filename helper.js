@@ -17,3 +17,14 @@ function decryptJvCare(jvCareClass) {
 function getRandomElement(array) {
     return array[Math.floor(Math.random() * array.length)];
 }
+
+function upperCaseRandomWords(text) {
+    if (!text?.length) return;
+    const words = text.split(' ').filter(w => w);
+    let totalWordToChange = Math.floor(words.length / 2);
+    for (let i = 0; i < totalWordToChange; i++) {
+        const randomIndex = Math.floor(Math.random() * words.length);
+        words[randomIndex] = words[randomIndex].toUpperCase();
+    }
+    return words.join(' ').trim();
+}
