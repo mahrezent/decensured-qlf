@@ -35,12 +35,18 @@ function displayOrHideMessage(messageElement, messageContentElement, messageId, 
     if (!messageContents.has(messageId)) return;
     const messageContent = messageContents.get(messageId);
     if (button.classList.contains(hideMessageClass)) { // On affiche le message bidon
-        messageContentElement.innerHTML = messageContent.crypted;
         button.classList.replace(hideMessageClass, displayMessageClass);
+        button.title = 'Afficher le message déchiffré';
+
+        messageContentElement.innerHTML = messageContent.crypted;
+
         messageElement.classList.toggle(decryptedMessageClass, false);
     } else { // On affiche le vrai message
-        messageContentElement.innerHTML = messageContent.decrypted;
         button.classList.replace(displayMessageClass, hideMessageClass);
+        button.title = 'Afficher le message chiffré';
+
+        messageContentElement.innerHTML = messageContent.decrypted;
+
         messageElement.classList.toggle(decryptedMessageClass, true);
     }
 }
@@ -50,7 +56,7 @@ function enhanceMessage(messageElement, messageContentElement, messageId) {
 
     const blocOptionsElement = messageElement.querySelector('.bloc-options-msg');
     const displayHideMessageButton = document.createElement('span');
-    displayHideMessageButton.title = 'Masquer le message';
+    displayHideMessageButton.title = 'Afficher le message chiffré';
     displayHideMessageButton.className = `decensured-option-button decensured-font-icon ${hideMessageClass}`;
     blocOptionsElement.prepend(displayHideMessageButton);
 
