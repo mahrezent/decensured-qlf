@@ -38,14 +38,14 @@ function displayOrHideMessage(messageElement, messageContentElement, messageId, 
         button.classList.replace(hideMessageClass, displayMessageClass);
         button.title = 'Afficher le message déchiffré';
 
-        messageContentElement.innerHTML = messageContent.crypted;
+        messageContentElement.innerHTML = messageContent.cryptedHtml;
 
         messageElement.classList.toggle(decryptedMessageClass, false);
     } else { // On affiche le vrai message
         button.classList.replace(displayMessageClass, hideMessageClass);
         button.title = 'Afficher le message chiffré';
 
-        messageContentElement.innerHTML = messageContent.decrypted;
+        messageContentElement.innerHTML = messageContent.decryptedHtml;
 
         messageElement.classList.toggle(decryptedMessageClass, true);
     }
@@ -95,13 +95,24 @@ async function beautifyMessages(elementMessages, decryptedMessages) {
         const messageContentElement = message.querySelector('.txt-msg.text-enrichi-forum');
         if (!messageContentElement) return;
 
-        messageContents.set(messageId, { crypted: messageContentElement.innerHTML, decrypted: newHtml });
+        messageContents.set(messageId, {
+            cryptedHtml: messageContentElement.innerHTML,
+            decryptedHtml: newHtml,
+            decryptedRaw: decryptedMessages.get(messageId)
+        });
 
         messageContentElement.innerHTML = newHtml;
         message.classList.add(decryptedMessageClass);
 
         enhanceMessage(message, messageContentElement, messageId);
     });
+}
+
+function buildQuoteButton() {
+    const quoteButton = document.createElement('span');
+    quoteButton.className = 'decensured-quote-button';
+    quoteButton.title = 'Citer';
+    return quoteButton;
 }
 
 async function decryptMessages() {
@@ -123,9 +134,17 @@ async function decryptMessages() {
         if (!messageId) return;
 
         const decryptedContent = revealText(content);
-        if (!decryptedContent.trim().length) return;
+        if (!decryptedContent.length) return;
 
         decryptedMessages.set(messageId, decryptedContent);
+
+        const quoteButtonElement = message.querySelector('.picto-msg-quote');
+        if (quoteButtonElement) {
+            const newQuoteButton = buildQuoteButton();
+            newQuoteButton.onclick = () => quoteMessage(message);
+            quoteButtonElement.insertAdjacentElement('beforebegin', newQuoteButton);
+            quoteButtonElement.remove(); // jvc rajoute les events plus tard
+        }
     });
 
     if (decryptedMessages.size) await beautifyMessages(allMessages, decryptedMessages);
@@ -135,7 +154,7 @@ function decryptTopicTitle() {
     const topicTitle = document.querySelector('#bloc-title-forum');
 
     const decryptedContent = revealText(topicTitle.textContent);
-    if (!decryptedContent.trim().length || topicTitle === decryptedContent) return;
+    if (!decryptedContent.length || topicTitle === decryptedContent) return;
 
     topicTitle.textContent = decryptedContent;
     document.title = revealText(document.title);
@@ -153,4 +172,27 @@ function postEncryptedMessage(postButtonElement, textAreaElement, newTopicTitleE
     }
 
     postButtonElement.click();
+}
+
+function quoteMessage(messageElement) {
+    const textAreaElement = document.querySelector('textarea#message_topic');
+    if (!textAreaElement) return;
+
+    const messageId = parseInt(messageElement.getAttribute('data-id'));
+    if (!messageId || !messageContents.has(messageId)) return;
+
+    const getAuthorFromCitationBtn = (e) => e.querySelector('.bloc-pseudo-msg.text-user').textContent.trim();
+    const getDateFromCitationBtn = (e) => e.querySelector('.bloc-date-msg').textContent.trim();
+    const getQuoteHeader = (e) => `> Le ${getDateFromCitationBtn(e)} '''${getAuthorFromCitationBtn(e)}''' a écrit : `;
+
+    let newValue = getQuoteHeader(messageElement);
+    newValue = `${newValue}\n> ${messageContents.get(messageId).decryptedRaw.split('\n').join('\n> ')}`; // add quote character at each line
+    newValue = newValue.replaceAll(/^(>\s*){2,}/gm, '> '); // remove multiple quotes imbrication
+    newValue = `${newValue}\n\n`;
+
+    textAreaElement.value = newValue;
+    textAreaElement.dispatchEvent(new Event('change'));
+    textAreaElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    textAreaElement.focus({ preventScroll: true });
+    textAreaElement.setSelectionRange(textAreaElement.value.length, textAreaElement.value.length);
 }

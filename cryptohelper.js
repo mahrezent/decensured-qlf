@@ -129,7 +129,7 @@ function revealText(str) {
 
         res += char; // caractère non géré
     }
-    return res.replaceAll(coverDetectionRegex, '');
+    return res.replaceAll(coverDetectionRegex, '').trim();
 }
 
 function buildCover(text, separation = ' ') {
