@@ -51,8 +51,21 @@ function displayOrHideMessage(messageElement, messageContentElement, messageId, 
     }
 }
 
+function fixNestedQuotes(messageElement) {
+    const nestedQuote = messageElement.querySelector('blockquote > blockquote');
+    if (!nestedQuote) return;
+    const nestedToggleElement = document.createElement('div');
+    nestedToggleElement.className = 'nested-quote-toggle-box';
+    nestedToggleElement.onclick = () => {
+        nestedQuote.toggleAttribute('data-visible');
+        if (nestedQuote.hasAttribute('data-visible')) nestedQuote.setAttribute('data-visible', '1');
+    }
+    nestedQuote.prepend(nestedToggleElement);
+}
+
 function enhanceMessage(messageElement, messageContentElement, messageId) {
     fixMessageJvCare(messageElement);
+    fixNestedQuotes(messageElement);
 
     const blocOptionsElement = messageElement.querySelector('.bloc-options-msg');
     const displayHideMessageButton = document.createElement('span');
@@ -187,7 +200,6 @@ function quoteMessage(messageElement) {
 
     let newValue = getQuoteHeader(messageElement);
     newValue = `${newValue}\n> ${messageContents.get(messageId).decryptedRaw.split('\n').join('\n> ')}`; // add quote character at each line
-    newValue = newValue.replaceAll(/^(>\s*){2,}/gm, '> '); // remove multiple quotes imbrication
     newValue = `${newValue}\n\n`;
 
     textAreaElement.value = newValue;
