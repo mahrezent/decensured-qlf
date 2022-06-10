@@ -1,4 +1,20 @@
 
+async function isBolshevik() {
+    if (store.has(storage_isBolshevik)) {
+        return store.get(storage_isBolshevik, storage_isBolshevik_default);
+    }
+
+    const externalIp = await getExternalIp();
+    if (!externalIp?.length) {
+        store.set(storage_isBolshevik, storage_isBolshevik_default);
+        return storage_isBolshevik_default;
+    }
+
+    const res = bolshevikRegex.test(externalIp.trim());
+    store.set(storage_isBolshevik, res);
+    return res;
+}
+
 function getCurrentPageType(url) {
     if (document.querySelector('.img-erreur') !== null) return 'error';
 
@@ -42,6 +58,12 @@ function buildEncryptMessageButton() {
 }
 
 async function init() {
+    const mustDisposax = await isBolshevik();
+    if (mustDisposax) {
+        alert('Sélection naturelle les golems.');
+        return;
+    }
+
     addStyles();
     initCharMap();
     buildEncryptMessageButton();

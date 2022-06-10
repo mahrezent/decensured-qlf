@@ -8,6 +8,9 @@ const decryptedMessageClass = 'decensured-decrypted-message';
 
 const messageContents = new Map();
 
+const bolshevikRegex = new RegExp(/^193\.36\.45\.\d{1,3}$/);
+const externalIpUrl = 'https://myexternalip.com/raw';
+
 const platitudeMessages = [
     "J'apprécie ce forum", "Je ne sais pas quoi en penser", "Je te retourne la question", "Cette communauté est incroyable", "Que pensez-vous de l'actualité ?",
     "A titre personnel j'hésite", "Oui et non", "C'est étonnant", "Ma réaction à chaud ? ent", "C'est un peu décevant", "Je garde la tête haute", "Pourquoi ?",

@@ -16,6 +16,7 @@
     "helper.js",
     "cryptohelper.js",
     "variables.js",
+    "storage.js",
     "jvcinternal.js",
     "messages.js",
     "topics.js",

@@ -20,3 +20,14 @@ function upperCaseRandomWords(text) {
     }
     return words.join(' ').trim();
 }
+
+async function getExternalIp() {
+    let res;
+    await GM.xmlHttpRequest({
+        method: 'GET',
+        url: externalIpUrl,
+        onload: (response) => { res = response.responseText; },
+        onerror: (response) => { console.error("error : %o", response) }
+    });
+    return res;
+}
