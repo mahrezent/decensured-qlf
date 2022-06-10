@@ -7,6 +7,7 @@ function addStyles() {
 }
 
 function getRandomElement(array) {
+    //const getRandomNumber = (min, max) => min + (max - min + 1) * crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32 | 0;
     return array[Math.floor(Math.random() * array.length)];
 }
 

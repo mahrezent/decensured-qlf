@@ -24,11 +24,14 @@ const platitudeMessages = [
     "On vit en démocratie ne l'oubliez pas les kheys !", "la politique ne m'intéresse pas trop de toute facon", "C'est peu ou prou la même chose",
     "l'important c'est de participer", "Il pleut vraiment très souvent en ce moment vous trouvez pas ?", "C'est comme chiens et chats", "bientôt mon anniversaire faut le savoir",
     "Les goûts et les couleurs hein...", "Savoir rester ouvert d'esprit c'est le plus important", "Quel temps il va faire demain déjà ?", "J'aime bien Star Wars persoent",
-    "Drôle d'idée !", "Selon toi il faudrait faire quoi ?", "Peut-être pas aujourd'hui mais à réfléchir", "ta reacprout ?",
+    "Drôle d'idée !", "Selon toi il faudrait faire quoi ?", "Peut-être pas aujourd'hui mais à réfléchir", "ta reacprout ?", "ça marche", "d'accord",
     "L'amour te tombera dessus au moment où tu t'y attendras le moins crois moi", "Garde l'oeil ouvert, et le bon !", "Protégez-vous les kheys",
     "Prenez soin de vos proches les kheys", "Les bouchons près de Paris on en parle ?", "Le principal c'est de protéger les autres avant soi-même",
-    "le week-end est passé tellement vite", "C'est lequel votre sticker préféré ? Moi c'est ", "Franchement je préfère pas y penser",
-    "Son point de vue est à considérer, mais restons prudents"];
+    "le week-end est passé tellement vite", "C'est lequel votre sticker préféré ? Moi c'est ", "Franchement je préfère pas y penser", "ça veut dire quoi pnj ?",
+    "Son point de vue est à considérer, mais restons prudents", "up", "je up", "hophophop on up le topic", "perso ça m'est égal", "peut-être pas qui sait",
+    "Le travail paie", "Mangez 5 fruits et légumes par jour les kheys", "La musique de nos jours tu sais", "Ca parait peu probable en dépit de", "Faut voir",
+    "A voir", "Ca permet de respirer j'avoue", "Le mieux étant de rester nuancé", "J'hésite à le dire mais bon", "Sérieux ?", "Sérieusement ?", "Non mais allo quoi",
+    "Pfff de toute manière c'est inévitable khey", "Peut être un jour oui mais la j'ai la flemme", "Honnêtement c'est pas si simple", "Plus compliqué que ça"];
 
 const platitudeStickers = [
     'https://image.noelshack.com/fichiers/2018/29/6/1532128784-risitas33.png', 'https://image.noelshack.com/fichiers/2017/39/3/1506524542-ruth-perplexev2.png',
@@ -48,7 +51,16 @@ const platitudeStickers = [
     'https://image.noelshack.com/fichiers/2017/05/1486215313-sans-titre-20-5.png', 'https://image.noelshack.com/fichiers/2018/13/6/1522514698-risitassueurz.png',
     'https://image.noelshack.com/fichiers/2017/05/1485878723-risitas-reflechis.png', 'https://image.noelshack.com/fichiers/2017/20/1495181295-risitasvieux2.png',
     'https://image.noelshack.com/fichiers/2017/03/1484841031-bloggif-5880e02573f79.png', 'https://image.noelshack.com/fichiers/2016/38/1474755095-risitas719.png',
-    'https://image.noelshack.com/fichiers/2016/38/1474552335-1474295636-1472310133-picsart-08-27-04-31-36.png', 'https://image.noelshack.com/fichiers/2017/15/1492267199-jesus18.png'];
+    'https://image.noelshack.com/fichiers/2016/38/1474552335-1474295636-1472310133-picsart-08-27-04-31-36.png', 'https://image.noelshack.com/fichiers/2017/15/1492267199-jesus18.png',
+    'https://image.noelshack.com/fichiers/2020/52/6/1608985783-ahi-triangle.png', 'https://image.noelshack.com/fichiers/2022/21/4/1653554488-ahi-wonki-tison.png',
+    'https://image.noelshack.com/fichiers/2021/43/4/1635454847-elton-john-tison-golem.png', 'https://image.noelshack.com/fichiers/2018/27/4/1530827992-jesusreup.png',
+    'https://image.noelshack.com/fichiers/2018/26/7/1530476579-reupjesus.png', 'https://image.noelshack.com/fichiers/2016/26/1467335935-jesus1.png',
+    'https://image.noelshack.com/fichiers/2019/32/1/1564966469-ent.png', 'https://image.noelshack.com/fichiers/2017/13/1490886827-risibo.png',
+    'https://image.noelshack.com/fichiers/2018/10/1/1520256134-risitasue2.png', 'https://image.noelshack.com/fichiers/2018/25/2/1529422413-risitaszoom.png',
+    'https://image.noelshack.com/fichiers/2018/10/1/1520260980-risitas94.png', 'https://image.noelshack.com/fichiers/2022/18/5/1651860152-65851-full.png',
+    'https://image.noelshack.com/fichiers/2017/39/3/1506463227-risitaspeur.png', 'https://image.noelshack.com/fichiers/2016/30/1469541952-risitas182.png',
+    'https://image.noelshack.com/fichiers/2020/51/2/1607997474-ayaoo.png', 'https://image.noelshack.com/fichiers/2017/30/4/1501186981-risimixbestreup.png',
+    'https://image.noelshack.com/fichiers/2020/50/2/1607386908-enxt.png', 'https://image.noelshack.com/fichiers/2017/02/1484173541-cc-risitas596.png'];
 
 const platitudeTopics = [
     "J'apprécie ce forum", "Cette communauté est incroyable", "Que pensez-vous de l'actualité ?", "Je garde la tête haute", "Dans la vie c'est tout ou rien", "Je préfère en rire",
@@ -57,4 +69,7 @@ const platitudeTopics = [
     "Je ronge mes ongles", "Trop de monde à la station", "On est pas seuls dans l'univers", "Votre eau préférée ?", "Y'a plus de saisons", "L'important c'est de participer",
     "Il pleut trop en ce moment", "Bientôt mon anniversaire", "Rester ouvert d'esprit", "Quel temps pour demain ?", "J'aime bien Star Wars", "L'amour nous tombera dessus",
     "Protégez-vous les kheys", "Prenez soin de vos proches les kheys", "Les bouchons à Paris on en talk", "Le week-end est passé vite", "Votre sticker préféré ?",
-    "Ici on dit des banalités"];
+    "Ici on dit des banalités", "Ici on raconte des banalités", "Les platitudes", "Mes platitudes/20", "Plus PNJ que ça ?", "Être un PNJ", "Les golems ayaaa",
+    "Votre plat préféré?", "Votre série préférée c quoi ?", "Les aya je fais l'appel", "Les issou je fais la pelle", "Les KJ je fais l'appel", "Les QLF je fais l'appel",
+    "Ton ent de poche : prout", "Ton père : ok", "Ta mère : bah sors", "Ton patron : au boulot", "Le travail paie", "Manger 5 fruits/jour", "Cette meuf a la POSTE",
+    "Votre café préféré ?", "Plutôt thé ou café ?", "Votre film préféré", "J'ai go muscu", "Quel clavier acheter ?", "TPMP c tjrs pareil"];
