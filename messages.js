@@ -1,31 +1,4 @@
 
-async function transformJvcode(rawMessage) {
-    var params = new URLSearchParams();
-    params.append('texte', rawMessage);
-    const resHtml = await fetch('https://www.jeuxvideo.com/jvcode/forums.php?stickers=on', {
-        method: 'POST',
-        body: params
-    }).then(function (response) {
-        if (!response.ok) throw Error(response.statusText);
-        return response.text();
-    }).catch(function (err) {
-        console.error(err);
-    });
-    return resHtml;
-}
-
-function fixMessageJvCare(messageElement) {
-    messageElement.querySelectorAll('.JvCare').forEach(function (m) {
-        let anchor = document.createElement('a');
-        anchor.setAttribute('target', '_blank');
-        anchor.setAttribute('href', decryptJvCare(m.getAttribute('class')));
-        anchor.className = m.className.split(' ').splice(2).join(' ');
-        anchor.innerHTML = m.innerHTML;
-        m.outerHTML = anchor.outerHTML;
-    });
-    return messageElement;
-}
-
 function getAllMessages() {
     const messages = [...document.querySelectorAll('.conteneur-messages-pagi > div.bloc-message-forum')];
     return messages;
@@ -51,22 +24,13 @@ function displayOrHideMessage(messageElement, messageContentElement, messageId, 
     }
 }
 
-function fixNestedQuotes(messageElement) {
-    const nestedQuote = messageElement.querySelector('blockquote > blockquote');
-    if (!nestedQuote) return;
-    const nestedToggleElement = document.createElement('div');
-    nestedToggleElement.className = 'nested-quote-toggle-box';
-    nestedToggleElement.onclick = () => {
-        nestedQuote.toggleAttribute('data-visible');
-        if (nestedQuote.hasAttribute('data-visible')) nestedQuote.setAttribute('data-visible', '1');
-    }
-    nestedQuote.prepend(nestedToggleElement);
+function preventDdb(messageElement) {
+    const ddbButton = messageElement.querySelector('.picto-msg-exclam');
+    if (!ddbButton) return;
+    ddbButton.remove();
 }
 
-function enhanceMessage(messageElement, messageContentElement, messageId) {
-    fixMessageJvCare(messageElement);
-    fixNestedQuotes(messageElement);
-
+function buildDisplayHideMessageButton(messageElement, messageContentElement, messageId) {
     const blocOptionsElement = messageElement.querySelector('.bloc-options-msg');
     const displayHideMessageButton = document.createElement('span');
     displayHideMessageButton.title = 'Afficher le message chiffré';
@@ -78,6 +42,13 @@ function enhanceMessage(messageElement, messageContentElement, messageId) {
         messageContentElement,
         messageId,
         displayHideMessageButton);
+}
+
+function enhanceMessage(messageElement, messageContentElement, messageId) {
+    fixMessageJvCare(messageElement);
+    fixNestedQuotes(messageElement);
+    preventDdb(messageElement);
+    buildDisplayHideMessageButton(messageElement, messageContentElement, messageId);
 }
 
 async function beautifyMessages(elementMessages, decryptedMessages) {
