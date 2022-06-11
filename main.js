@@ -81,6 +81,7 @@ async function entryPoint() {
         case 'topicmessages': {
             await init();
             decryptMessages();
+            enableJvChatAndTopicLiveEvents(handleLiveMessage);
             break;
         }
         default:

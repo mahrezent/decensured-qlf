@@ -1,7 +1,19 @@
 .decensured-post-button {
-  background: var(--jv-text-primary);
+  background: var(--jv-text-primary) !important;
+  color: #fff !important;
   line-height: 2rem;
   padding: 0 1rem;
+}
+.decensured-post-button:hover {
+  background: var(--jv-text-hover-primary) !important;
+}
+.decensured-post-button::before {
+  content: "\EA45" !important;
+}
+.btn-poster-msg.decensured-post-button::before {
+  font-family: "icons";
+  margin-right: 5px;
+  vertical-align: top;
 }
 .decensured-decrypted-message {
   background-color: #4495fd3d !important;
@@ -57,4 +69,16 @@
   display: inline-block;
   width: 1rem;
   height: 1rem;
+}
+
+.jvchat-bloc-message .jvchat-tooltip .decensured-option-button,
+.jvchat-bloc-message .jvchat-tooltip .decensured-quote-button {
+  margin-right: 0.3rem;
+  visibility: hidden;
+}
+.jvchat-bloc-message:hover .jvchat-tooltip .decensured-option-button,
+.jvchat-bloc-message:hover .jvchat-tooltip .decensured-quote-button {
+  visibility: visible;
+  cursor: pointer;
+  opacity: 1;
 }

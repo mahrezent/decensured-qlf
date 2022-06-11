@@ -20,6 +20,7 @@
     "jvcinternal.js",
     "messages.js",
     "topics.js",
+    "plugins.js",
     "main.js"
   ],
   "rules": {

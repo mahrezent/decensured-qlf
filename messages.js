@@ -31,7 +31,8 @@ function preventDdb(messageElement) {
 }
 
 function buildDisplayHideMessageButton(messageElement, messageContentElement, messageId) {
-    const blocOptionsElement = messageElement.querySelector('.bloc-options-msg');
+    const blocOptionsElement = messageElement.querySelector('.bloc-options-msg') ?? messageElement.querySelector('.jvchat-tooltip');
+    if (!blocOptionsElement) return;
     const displayHideMessageButton = document.createElement('span');
     displayHideMessageButton.title = 'Afficher le message chiffré';
     displayHideMessageButton.className = `decensured-option-button decensured-font-icon ${hideMessageClass}`;
@@ -51,7 +52,27 @@ function enhanceMessage(messageElement, messageContentElement, messageId) {
     buildDisplayHideMessageButton(messageElement, messageContentElement, messageId);
 }
 
-async function beautifyMessages(elementMessages, decryptedMessages) {
+async function beautifyMessage(messageElement, decryptedMessage, messageId) {
+    const messageContentElement = messageElement.querySelector('.txt-msg.text-enrichi-forum');
+    if (!messageContentElement) return;
+
+    let jvCodeHtml = messageContents.get(messageId)?.decryptedHtml;
+    if (!jvCodeHtml?.length) {
+        jvCodeHtml = await transformJvcode(decryptedMessage);
+        messageContents.set(messageId, {
+            cryptedHtml: messageContentElement.innerHTML,
+            decryptedHtml: jvCodeHtml,
+            decryptedRaw: decryptedMessage
+        });
+    }
+
+    messageContentElement.innerHTML = jvCodeHtml;
+    messageElement.classList.add(decryptedMessageClass);
+
+    enhanceMessage(messageElement, messageContentElement, messageId);
+}
+
+async function beautifyMessagesCluster(messageElements, decryptedMessages) {
     // On regroupe tout pour ne faire qu'une seule requête
     let joinedMessages = '';
     for (let [key, value] of decryptedMessages) joinedMessages += `\n\nmessageid=${key}\n\n${value}\n`;
@@ -70,13 +91,13 @@ async function beautifyMessages(elementMessages, decryptedMessages) {
         const newHtml = match.groups?.html.trim();
         if (!newHtml?.length) return;
 
-        const message = elementMessages.find(m => {
+        const messageElement = messageElements.find(m => {
             const mId = parseInt(m.getAttribute('data-id'));
             return mId === messageId;
         });
-        if (!message) return;
+        if (!messageElement) return;
 
-        const messageContentElement = message.querySelector('.txt-msg.text-enrichi-forum');
+        const messageContentElement = messageElement.querySelector('.txt-msg.text-enrichi-forum');
         if (!messageContentElement) return;
 
         messageContents.set(messageId, {
@@ -86,9 +107,9 @@ async function beautifyMessages(elementMessages, decryptedMessages) {
         });
 
         messageContentElement.innerHTML = newHtml;
-        message.classList.add(decryptedMessageClass);
+        messageElement.classList.add(decryptedMessageClass);
 
-        enhanceMessage(message, messageContentElement, messageId);
+        enhanceMessage(messageElement, messageContentElement, messageId);
     });
 }
 
@@ -99,6 +120,35 @@ function buildQuoteButton() {
     return quoteButton;
 }
 
+function decryptMessage(messageElement) {
+    const messageId = parseInt(messageElement.getAttribute('data-id') ?? messageElement.getAttribute('jvchat-id'));
+    if (!messageId) return;
+
+    if (messageContents.has(messageId)) {
+        return { messageId: messageId, decryptedContent: messageContents.get(messageId).decryptedRaw };
+    }
+
+    const messageContentElement = messageElement.querySelector('.txt-msg.text-enrichi-forum');
+    if (!messageContentElement) return;
+
+    const content = messageContentElement.textContent.trim();
+    if (!content.match(coverDetectionRegex)) return;
+
+
+    const decryptedContent = revealText(content);
+    if (!decryptedContent.length) return;
+
+    const quoteButtonElement = messageElement.querySelector('.picto-msg-quote');
+    if (quoteButtonElement) {
+        const newQuoteButton = buildQuoteButton();
+        newQuoteButton.onclick = () => quoteMessage(messageElement);
+        quoteButtonElement.insertAdjacentElement('beforebegin', newQuoteButton);
+        quoteButtonElement.remove(); // jvc rajoute les events plus tard
+    }
+
+    return { messageId: messageId, decryptedContent: decryptedContent };
+}
+
 async function decryptMessages() {
     const allMessages = getAllMessages();
     if (!allMessages.length) return;
@@ -107,31 +157,13 @@ async function decryptMessages() {
 
     // D'abord on déchiffre tous les messages
     const decryptedMessages = new Map();
-    allMessages.forEach(async (message) => {
-        const messageContentElement = message.querySelector('.txt-msg.text-enrichi-forum');
-        if (!messageContentElement) return;
-
-        const content = messageContentElement.textContent.trim();
-        if (!content.match(coverDetectionRegex)) return;
-
-        const messageId = parseInt(message.getAttribute('data-id'));
-        if (!messageId) return;
-
-        const decryptedContent = revealText(content);
-        if (!decryptedContent.length) return;
-
-        decryptedMessages.set(messageId, decryptedContent);
-
-        const quoteButtonElement = message.querySelector('.picto-msg-quote');
-        if (quoteButtonElement) {
-            const newQuoteButton = buildQuoteButton();
-            newQuoteButton.onclick = () => quoteMessage(message);
-            quoteButtonElement.insertAdjacentElement('beforebegin', newQuoteButton);
-            quoteButtonElement.remove(); // jvc rajoute les events plus tard
-        }
+    allMessages.forEach((messageElement) => {
+        const decryptedMessage = decryptMessage(messageElement);
+        if (!decryptedMessage?.messageId || !decryptedMessage?.decryptedContent) return;
+        decryptedMessages.set(decryptedMessage.messageId, decryptedMessage.decryptedContent);
     });
 
-    if (decryptedMessages.size) await beautifyMessages(allMessages, decryptedMessages);
+    if (decryptedMessages.size) await beautifyMessagesCluster(allMessages, decryptedMessages);
 }
 
 function decryptTopicTitle() {
@@ -162,11 +194,11 @@ function quoteMessage(messageElement) {
     const textAreaElement = document.querySelector('textarea#message_topic');
     if (!textAreaElement) return;
 
-    const messageId = parseInt(messageElement.getAttribute('data-id'));
+    const messageId = parseInt(messageElement.getAttribute('data-id') ?? messageElement.getAttribute('jvchat-id'));
     if (!messageId || !messageContents.has(messageId)) return;
 
-    const getAuthorFromCitationBtn = (e) => e.querySelector('.bloc-pseudo-msg.text-user').textContent.trim();
-    const getDateFromCitationBtn = (e) => e.querySelector('.bloc-date-msg').textContent.trim();
+    const getAuthorFromCitationBtn = (e) => (e.querySelector('.bloc-pseudo-msg.text-user') ?? e.querySelector('.jvchat-author'))?.textContent?.trim();
+    const getDateFromCitationBtn = (e) => (e.querySelector('.bloc-date-msg') ?? e.querySelector('.jvchat-date'))?.textContent?.trim();
     const getQuoteHeader = (e) => `> Le ${getDateFromCitationBtn(e)} '''${getAuthorFromCitationBtn(e)}''' a écrit : `;
 
     let newValue = getQuoteHeader(messageElement);

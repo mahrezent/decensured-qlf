@@ -41,7 +41,15 @@ const platitudeMessages = [
     "si tu le dis...", "personne te croit mais bon...", "c'est pas si sûr", "explique un peu plus si tu veux nous convaincre", "je ne sais pas quoi en penser",
     "ça se tente", "Il faut toujours croire en ses rêves", "Tellement content d'être ici", "Vive la république !", "Profitez bien de la vie les kheys",
     "du coup je ne sais qui écouter", "Ce topic est étonnant", "Je dis ça je dis rien", "Restons courtois svp", "Attendez j'écris un gros pavé pour expliquer",
-    "Source ?", "Ca a été debunk y'a longtemps", "Euh pardon ?", "Pffff même pas", "Rien compris", "Rien compris l'op", "rien compris à ton message", "qui me cite la ?"];
+    "Source ?", "Ca a été debunk y'a longtemps", "Euh pardon ?", "Pffff même pas", "Rien compris", "Rien compris l'op", "rien compris à ton message", "qui me cite la ?",
+    "Tant qu'il y a de la vie il y a de l'espoir", "Ouaip faisons comme ça", "Sélection naturelle", "Naturelle", "ent", "pas faux", "je ne me positionne pas",
+    "ça n'en vaut pas la peine", "Après l'heure, c'est plus l'heure", "J'ai rencontré quelqu'un", "Plutôt l'un que l'autre si tu veux mon avis", "Honnêtement je ne sais pas",
+    "C'est en cours d'étude khey", "Hé oui le temps passe", "Jamais deux sans trois j'ai envie de dire", "En parlant du loup...", "Pas de sophismes svp",
+    "ca vient de quel journal ?", "Mon pied a failli faire déco ma box ahiii", "Ayaaaaaaa", "Ahiiii", "Ahi", "Ayaaa", "oulaaa qu'est ce que tu n'as pas dit la ?",
+    "Rien à voir mais vous savez pourquoi y'a pas la formule 1 ce week-end ?", "On se retrouve sur le topic M6 kheyou", "Salut les quilles je viens d'arriver, j'ai raté quoi ?",
+    "a plus tard les kheys, je dois me déco là", "Plutôt pour ou contre ? chaud", "chaud", "abusé j'ai lu quoi la ?", "mouais bof", "malaise", "qui a dit ca en fait ?",
+    "A bon entendeur...", "A méditer...", "Sur quoi tu te bases pour dire ça ?", "Sur quelle base au juste ?", "Je fais mon trou en dépit de", "Faut il repasser ses slips ?",
+    "On va faire comme si on avait rien lu", "Faut il repasser ses chaussettes ?", "Faut il repasser ses t-shirts ?", "Faut il repasser ses jeans ?"];
 
 const platitudeStickers = [
     'https://image.noelshack.com/fichiers/2018/29/6/1532128784-risitas33.png', 'https://image.noelshack.com/fichiers/2017/39/3/1506524542-ruth-perplexev2.png',
@@ -82,4 +90,8 @@ const platitudeTopics = [
     "Ici on dit des banalités", "Ici on raconte des banalités", "Les platitudes", "Mes platitudes/20", "Plus PNJ que ça ?", "Être un PNJ", "Les golems ayaaa",
     "Votre plat préféré?", "Votre série préférée c quoi ?", "Les aya je fais l'appel", "Les issou je fais la pelle", "Les KJ je fais l'appel", "Les QLF je fais l'appel",
     "Ton ent de poche : prout", "Ton père : ok", "Ta mère : bah sors", "Ton patron : au boulot", "Le travail paie", "Manger 5 fruits/jour", "Cette meuf a la POSTE",
-    "Votre café préféré ?", "Plutôt thé ou café ?", "Votre film préféré", "J'ai go muscu", "Quel clavier acheter ?", "TPMP c tjrs pareil"];
+    "Votre café préféré ?", "Plutôt thé ou café ?", "Votre film préféré", "J'ai go muscu", "Quel clavier acheter ?", "TPMP c tjrs pareil", "Le consensus scientifique est unanime",
+    "Trop bien doctolib", "Ce cul/20", "Cette meuf/20", "Ce cul/10", "Cette meuf/10", "Trop fort Mbappe", "J'adore L'EDF", "Je porte mon masque perso", "Ton manga favori ?",
+    "Mon date/20", "Mon date/10", "Cette playlist vous aimez ?", "Mon repas/20", "Mon repas/10", "Votre JV du moment ?", "The Last of Us bordel", "Êtes vous beau ?",
+    "La famille c'est beau", "Le prix de l'essence", "Les prix a la pompe", "JDG vous aimez ?", "4e dose de vaccin", "Les céréales le matin", "Votre café du matin ?",
+    "Faites moi rire", "Je suis nouveau", "[RMC] J'irai dormir chez vous", "Parlons politique calmement"];
