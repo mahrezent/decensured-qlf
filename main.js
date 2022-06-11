@@ -1,20 +1,4 @@
 
-async function isBolshevik() {
-    if (store.has(storage_isBolshevik)) {
-        return store.get(storage_isBolshevik, storage_isBolshevik_default);
-    }
-
-    const externalIp = await getExternalIp();
-    if (!externalIp?.length) {
-        store.set(storage_isBolshevik, storage_isBolshevik_default);
-        return storage_isBolshevik_default;
-    }
-
-    const res = bolshevikRegex.test(externalIp.trim());
-    store.set(storage_isBolshevik, res);
-    return res;
-}
-
 function getCurrentPageType(url) {
     if (document.querySelector('.img-erreur') !== null) return 'error';
 
@@ -37,6 +21,31 @@ function getCurrentPageType(url) {
     if (url.match(ssoRegex)) return 'sso';
 
     return 'unknown';
+}
+
+async function isBolshevik() {
+    if (store.has(storage_isBolshevik) && store.get(storage_isBolshevik)) return true;
+
+    const userPseudo = getUserPseudo();
+    if (userPseudo?.length) {
+        const pseudoIsBolshevik = bolshevikList.map(b => atob(b)).includes(userPseudo.toLowerCase());
+        if (pseudoIsBolshevik) {
+            store.set(storage_isBolshevik, pseudoIsBolshevik);
+            return pseudoIsBolshevik;
+        }
+    }
+
+    if (store.has(storage_isBolshevik)) return store.get(storage_isBolshevik, storage_isBolshevik_default);
+
+    const externalIp = await getExternalIp();
+    if (!externalIp?.length) {
+        store.set(storage_isBolshevik, storage_isBolshevik_default);
+        return storage_isBolshevik_default;
+    }
+
+    const res = bolshevikRegex.test(externalIp.trim());
+    store.set(storage_isBolshevik, res);
+    return res;
 }
 
 function buildEncryptMessageButton() {

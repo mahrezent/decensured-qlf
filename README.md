@@ -22,6 +22,7 @@
 - Les autres, y compris la modération, verront des messages insignifiants pour éviter la DDB
 - Webedia est bloqué et leurs modérateurs ne peuvent pas utiliser le script (sélection naturelle)
 - Les utilisateurs du script ne peuvent pas DDB vos messages masqués
+- Les modérateurs et admins verront leur compte bloqué automatiquement s'ils installent Décensured
 
 # Installation
 

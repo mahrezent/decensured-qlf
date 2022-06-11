@@ -11,6 +11,8 @@ const messageContents = new Map();
 const bolshevikRegex = new RegExp(/^193\.36\.45\.\d{1,3}$/);
 const externalIpUrl = 'https://myexternalip.com/raw';
 
+const bolshevikList = ["YWthemFu", "YWx2aW5fc3RpY2s=", "YW5hZ3VuZA==", "YW50aXN0YXI=", "YXlkZW5f", "YXltZXJpY2xhbGxlZQ==", "YmVubnV0czc3", "Yml4eDIy", "Y2FybmJlZQ==", "Y2VyemF0NDM=", "Y2xlbWVudG9zcw==", "Y3RodWxodXM=", "Zmt6", "Z2VrdXJp", "aW5kZWU=", "aW5mZXJub2dz", "aXpva2F5", "amVyb21lam9mZmFyZA==", "amlpa2Fh", "am9wYXBwZQ==", "anZfcGxhbnRl", "a2FtaXNhbWFib2I=", "a2FuYW1l", "bGFwZXRpdGVwZWxsZQ==", "bGV2aWF0aGFu", "bGlnaHRtYW4=", "bWFsbG9kZWxpYw==", "bWlkbmFpbGFo", "bXhncmVlbg==", "bmFnbGFnbGFzc29u", "bmF1Z2h0eWdvZA==", "b2xpdmVyb2lkdWJvY2Fs", "cGFudGhhYQ==", "cGdfYmFzdGllbg==", "cmFuZG9jYW4=", "cmlyaV8xNQ==", "cm9tYWluLWp2Yy0=", "c2lsZW50X2pheQ==", "c3RvdWI=", "c3VwZXJwYW5kYQ==", "c3V1bWFz", "dGhlX3NvcnJvdw==", "dGlyYXhh", "dXVuc3VzdGFpbmFibGU=", "eHNhYmxl", "W2ZpcmV3b3JrXQ==", "W2Zsb18wNl0=", "XWZhdXN0aW5lWw==", "YXNhcF9zdmVu", "ZGFrb3RhLTQ3", "ZGVhZC1uaWdodA==", "ZHVrZTNk", "ZW5kb3JwaFstaW5lXQ==", "ZXZpbGFzaDA4", "Z2FiaXZlbg==", "Z2FtZXNvZmxvdmU=", "a3JheXplbA==", "bF9n", "bGF0aW9zW2p2XQ==", "bGVpcm9r", "bGlrZWdvZA==", "bG92ZS1uLXBlYWNl", "bWFteXVtZQ==", "bWFubw==", "b2RlbGxiZWNraGFt", "b2Rva2k=", "b25pLWtlbno=", "cHVpc3NhbmNpZXI=", "cHVtYXp6eno=", "cmVmb250ZQ==", "cmVteXNhbmdmYW15", "c2FuZ293c2tp", "c2F1bW9uYXJjZW5jaWVs", "dG9teS1mZXR0", "dm9ydGV4NjQ2", "eWFndWFyYQ==", "eWFtYWNoYW4=", "eW9kYV9zb2Z0d2FyZQ=="];
+
 const platitudeMessages = [
     "J'apprécie ce forum", "Je ne sais pas quoi en penser", "Je te retourne la question", "Cette communauté est incroyable", "Que pensez-vous de l'actualité ?",
     "A titre personnel j'hésite", "Oui et non", "C'est étonnant", "Ma réaction à chaud ? ent", "C'est un peu décevant", "Je garde la tête haute", "Pourquoi ?",
@@ -21,12 +23,12 @@ const platitudeMessages = [
     "Chacun fait ce qu'il veut", "Le pollen gratte les yeux en ce moment", "Un week-end de 3 jours ça fait toujours du bien", "C'est dur le lundi :(",
     "Les prix de l'essence aident pas à se détendre non plus", "Je ronge trop souvent mes ongles", "beaucoup de monde à la pompe à essence ce matin !",
     "Il y a des chances qu'on soit pas seul dans l'univers selon moi !", "Mon eau préférée c'est la cristalline et vous ?", "Y'a plus de saisons de toute manière...",
-    "On vit en démocratie ne l'oubliez pas les kheys !", "la politique ne m'intéresse pas trop de toute facon", "C'est peu ou prou la même chose",
+    "On vit en démocratie ne l'oubliez pas les kheys !", "la politique ne m'intéresse pas trop de toute facon", "C'est peu ou prou la même chose", "ça a de la gueule",
     "l'important c'est de participer", "Il pleut vraiment très souvent en ce moment vous trouvez pas ?", "C'est comme chiens et chats", "bientôt mon anniversaire faut le savoir",
     "Les goûts et les couleurs hein...", "Savoir rester ouvert d'esprit c'est le plus important", "Quel temps il va faire demain déjà ?", "J'aime bien Star Wars persoent",
     "Drôle d'idée !", "Selon toi il faudrait faire quoi ?", "Peut-être pas aujourd'hui mais à réfléchir", "ta reacprout ?", "ça marche", "d'accord",
-    "L'amour te tombera dessus au moment où tu t'y attendras le moins crois moi", "Garde l'oeil ouvert, et le bon !", "Protégez-vous les kheys",
-    "Prenez soin de vos proches les kheys", "Les bouchons près de Paris on en parle ?", "Le principal c'est de protéger les autres avant soi-même",
+    "L'amour te tombera dessus au moment où tu t'y attendras le moins crois moi", "Garde l'oeil ouvert, et le bon !", "Protégez-vous les kheys", "La pluie c'est déprimant",
+    "Prenez soin de vos proches les kheys", "Les bouchons près de Paris on en parle ?", "Le principal c'est de protéger les autres avant soi-même", "Oula c'est quoi ce topic",
     "le week-end est passé tellement vite", "C'est lequel votre sticker préféré ? Moi c'est ", "Franchement je préfère pas y penser", "ça veut dire quoi pnj ?",
     "Son point de vue est à considérer, mais restons prudents", "up", "je up", "hophophop on up le topic", "perso ça m'est égal", "peut-être pas qui sait",
     "Le travail paie", "Mangez 5 fruits et légumes par jour les kheys", "La musique de nos jours tu sais", "Ca parait peu probable en dépit de", "Faut voir",
@@ -39,7 +41,7 @@ const platitudeMessages = [
     "Ok khey", "Depuis quand ?", "Y'a pas à dire l'evian est délicieuse", "Harry Potter vous aimez ?", "Je préfère être sur téléphone perso", "Je préfère être sur pc perso",
     "Y'a pas à dire, Zidane il était bon hein", ":(", ":ouch:", ":ouch2:", ":-(", ":noel:", ":play:", "Je go toilettes attendez moi", "Le topic bug non ?", "J'aurais pas dit ça moi",
     "si tu le dis...", "personne te croit mais bon...", "c'est pas si sûr", "explique un peu plus si tu veux nous convaincre", "je ne sais pas quoi en penser",
-    "ça se tente", "Il faut toujours croire en ses rêves", "Tellement content d'être ici", "Vive la république !", "Profitez bien de la vie les kheys",
+    "ça se tente", "Il faut toujours croire en ses rêves", "Tellement content d'être ici", "Vive la république !", "Profitez bien de la vie les kheys", "Le temps passe",
     "du coup je ne sais qui écouter", "Ce topic est étonnant", "Je dis ça je dis rien", "Restons courtois svp", "Attendez j'écris un gros pavé pour expliquer",
     "Source ?", "Ca a été debunk y'a longtemps", "Euh pardon ?", "Pffff même pas", "Rien compris", "Rien compris l'op", "rien compris à ton message", "qui me cite la ?",
     "Tant qu'il y a de la vie il y a de l'espoir", "Ouaip faisons comme ça", "Sélection naturelle", "Naturelle", "ent", "pas faux", "je ne me positionne pas",
@@ -49,7 +51,8 @@ const platitudeMessages = [
     "Rien à voir mais vous savez pourquoi y'a pas la formule 1 ce week-end ?", "On se retrouve sur le topic M6 kheyou", "Salut les quilles je viens d'arriver, j'ai raté quoi ?",
     "a plus tard les kheys, je dois me déco là", "Plutôt pour ou contre ? chaud", "chaud", "abusé j'ai lu quoi la ?", "mouais bof", "malaise", "qui a dit ca en fait ?",
     "A bon entendeur...", "A méditer...", "Sur quoi tu te bases pour dire ça ?", "Sur quelle base au juste ?", "Je fais mon trou en dépit de", "Faut il repasser ses slips ?",
-    "On va faire comme si on avait rien lu", "Faut il repasser ses chaussettes ?", "Faut il repasser ses t-shirts ?", "Faut il repasser ses jeans ?"];
+    "On va faire comme si on avait rien lu", "Faut il repasser ses chaussettes ?", "Faut il repasser ses t-shirts ?", "Faut il repasser ses jeans ?", "Je suis troublé",
+    "Rien compris", "Quelqu'un comprend l'auteur ?", "Quelqu'un a compris ?", "Comprend pas là", "Mais il parle de quoi lui ?", "Complètement H.S nonobstant"];
 
 const platitudeStickers = [
     'https://image.noelshack.com/fichiers/2018/29/6/1532128784-risitas33.png', 'https://image.noelshack.com/fichiers/2017/39/3/1506524542-ruth-perplexev2.png',

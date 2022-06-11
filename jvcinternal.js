@@ -45,3 +45,16 @@ function fixNestedQuotes(messageElement) {
     }
     nestedQuote.prepend(nestedToggleElement);
 }
+
+function getUserPseudo() {
+    const pseudoElem = document.querySelector('.headerAccount__pseudo');
+    if (!pseudoElem) return undefined;
+
+    const pseudo = pseudoElem.textContent.trim();
+    if (pseudo.toLowerCase() === 'mon compte' || pseudo.toLowerCase() === 'connexion') return undefined;
+
+    const linkAccountElem = document.querySelector('.headerAccount__link')
+    if (!linkAccountElem || !linkAccountElem.hasAttribute('data-account-id')) return undefined;
+
+    return pseudo;
+}
