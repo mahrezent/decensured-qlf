@@ -141,7 +141,7 @@ function decryptMessage(messageElement) {
     const quoteButtonElement = messageElement.querySelector('.picto-msg-quote');
     if (quoteButtonElement) {
         const newQuoteButton = buildQuoteButton();
-        newQuoteButton.onclick = () => quoteMessage(messageElement);
+        newQuoteButton.onclick = () => quoteDecensuredMessage(messageElement);
         quoteButtonElement.insertAdjacentElement('beforebegin', newQuoteButton);
         quoteButtonElement.remove(); // jvc rajoute les events plus tard
     }
@@ -187,10 +187,11 @@ function postEncryptedMessage(postButtonElement, textAreaElement, newTopicTitleE
         newTopicTitleElement.value = encryptedTitle;
     }
 
+    postButtonElement.removeAttribute('disabled');
     postButtonElement.click();
 }
 
-function quoteMessage(messageElement) {
+function quoteDecensuredMessage(messageElement) {
     const textAreaElement = document.querySelector('textarea#message_topic');
     if (!textAreaElement) return;
 
@@ -210,4 +211,8 @@ function quoteMessage(messageElement) {
     textAreaElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     textAreaElement.focus({ preventScroll: true });
     textAreaElement.setSelectionRange(textAreaElement.value.length, textAreaElement.value.length);
+
+    const postButtonElement = document.querySelector('.btn-poster-msg');
+    if (!postButtonElement) return;
+    postButtonElement.disabled = true;
 }
