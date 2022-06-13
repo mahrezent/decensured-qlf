@@ -57,7 +57,7 @@ function buildEncryptMessageButton() {
 
     const encryptedPostButton = document.createElement('div');
     encryptedPostButton.className = 'btn btn-poster-msg datalayer-push js-post-message decensured-post-button';
-    encryptedPostButton.textContent = 'POST DÉCENSURED';
+    encryptedPostButton.textContent = 'POSTENT DECENSURAX';
     postButtonElement.insertAdjacentElement('afterend', encryptedPostButton);
 
     const newTopicTitleElement = document.querySelector('#titre_topic');
