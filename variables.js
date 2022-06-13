@@ -76,29 +76,6 @@ const platitudeMessages = [
     "guapa sheitana dans la villa"];
 
 const platitudeStickers = ['https://image.noelshack.com/fichiers/2016/50/1482086657-pnlademorire.png', 
-                           'https://image.noelshack.com/fichiers/2017/14/1491521773-img-20170407-013554.png', 
-                           'https://image.noelshack.com/fichiers/2017/11/1489849680-img-20170318-160705.png', 
-                           'https://image.noelshack.com/fichiers/2016/50/1481665326-pnl2.png', 
-                           'https://image.noelshack.com/fichiers/2017/11/1489850421-img-20170318-161731.png', 
-                           'https://image.noelshack.com/fichiers/2017/11/1489945807-img-20170319-184623.png', 
-                           'https://image.noelshack.com/fichiers/2021/09/7/1615073676-ronaldo-cigarette-hd.jpg', 
-                           'https://image.noelshack.com/fichiers/2017/11/1489945807-img-20170319-184623.png', 
-                           'https://image.noelshack.com/fichiers/2017/14/1491522200-img-20170407-014306.png', 
-                           'https://image.noelshack.com/fichiers/2017/11/1489836788-img-20170318-123229.png', 
-                           'https://image.noelshack.com/fichiers/2017/11/1489949358-img-20170319-194401.png', 
-                           'https://image.noelshack.com/fichiers/2018/52/1/1545642362-cr7ds.png', 
-                           'https://image.noelshack.com/fichiers/2019/24/2/1560277733-peau2genou-dz3.png', 
-                           'https://image.noelshack.com/fichiers/2019/02/2/1546976853-snapchat20190108.jpg',
-                           'https://image.noelshack.com/fichiers/2019/32/1/1564966469-ent.png',
-                           'https://image.noelshack.com/fichiers/2021/16/2/1618877900-ronaldomain4khd-min.jpg', 
-                           'https://image.noelshack.com/fichiers/2019/12/6/1553370870-snapchat205153.jpg',
-                           'https://image.noelshack.com/fichiers/2019/12/6/1553352567-nos-df.png',
-                           'https://image.noelshack.com/fichiers/2019/21/3/1558562022-deux-freres.png',
-                           'https://image.noelshack.com/fichiers/2019/27/2/1562098170-dll.jpg',
-                           'https://image.noelshack.com/fichiers/2017/06/1486924454-pnl-nuage.png',
-                           'https://image.noelshack.com/fichiers/2017/49/6/1512859316-leszitounes.png',
-                           'https://image.noelshack.com/fichiers/2017/25/6/1498307820-nos-fume.png',
-                           'https://image.noelshack.com/fichiers/2019/32/7/1565530192-drapeau-algerie.png',
-                           'https://image.noelshack.com/fichiers/2017/49/7/1512860722-pnlpaixsurvous.png'];
+                           'https://image.noelshack.com/fichiers/2017/14/1491521773-img-20170407-013554.png'];
 
 const platitudeTopics = platitudeMessages
